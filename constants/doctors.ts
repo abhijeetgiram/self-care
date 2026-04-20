@@ -1,0 +1,69 @@
+import { Doctor } from "@/models/doctors";
+
+export const DOCTORS_LIST: Doctor[] = [
+  {
+    id: "1",
+    name: "Dr. Rahul Deshmukh",
+    specialty: "Pediatrics",
+    rating: "4.9",
+    reviews: 123,
+    price: "₹850",
+    exp: "+10 year",
+    patients: "+617",
+    location: "Ruby Hall Clinic, Pune",
+    image:
+      "https://ui-avatars.com/api/?name=Rahul+Deshmukh&background=EAA4E8&color=fff&bold=true",
+  },
+  {
+    id: "2",
+    name: "Dr. Priya Sharma",
+    specialty: "Nephrologist",
+    rating: "4.6",
+    reviews: 317,
+    price: "₹900",
+    exp: "+8 year",
+    patients: "+423",
+    location: "Jehangir Hospital, Pune",
+    image:
+      "https://ui-avatars.com/api/?name=Priya+Sharma&background=7ED9A4&color=fff&bold=true",
+  },
+  {
+    id: "3",
+    name: "Dr. Amit Kulkarni",
+    specialty: "Dentist",
+    rating: "4.9",
+    reviews: 85,
+    price: "₹500",
+    exp: "+5 year",
+    patients: "+200",
+    location: "Baner Dental Care, Pune",
+    image:
+      "https://ui-avatars.com/api/?name=Amit+Kulkarni&background=6B8FE8&color=fff&bold=true",
+  },
+  {
+    id: "4",
+    name: "Dr. Sneha Joshi",
+    specialty: "Urologist",
+    rating: "4.8",
+    reviews: 168,
+    price: "₹1200",
+    exp: "+12 year",
+    patients: "+890",
+    location: "Manipal Hospital, Kharadi",
+    image:
+      "https://ui-avatars.com/api/?name=Sneha+Joshi&background=F47E60&color=fff&bold=true",
+  },
+  {
+    id: "5",
+    name: "Dr. Anjali Patil",
+    specialty: "Cardiologist",
+    rating: "4.8",
+    reviews: 220,
+    price: "₹1500",
+    exp: "+15 year",
+    patients: "+1k",
+    location: "Deenanath Mangeshkar Hospital",
+    image:
+      "https://ui-avatars.com/api/?name=Anjali+Patil&background=EAA4E8&color=fff&bold=true",
+  },
+];
