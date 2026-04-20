@@ -1,11 +1,11 @@
 import { Link } from "expo-router";
 import {
-    Image,
-    ScrollView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -23,7 +23,7 @@ export default function Home() {
               Welcome Back, Abhijeet!
             </Text>
             <Text className="text-gray-400 mt-1 font-medium">
-              📍 Kalyani Nagar, Pune
+              📍 Magarpatta City, Pune
             </Text>
           </View>
           {/* User Profile using UI Avatars matching your brand green */}
@@ -65,7 +65,7 @@ export default function Home() {
                 <View className="flex-row items-center mb-4">
                   <Image
                     source={{
-                      uri: "https://ui-avatars.com/api/?name=Anjali+Patil&background=fff&color=6B8FE8&bold=true",
+                      uri: "https://randomuser.me/api/portraits/women/24.jpg?nat=in",
                     }}
                     className="w-12 h-12 rounded-full bg-blue-300 mr-3"
                   />
@@ -159,7 +159,7 @@ export default function Home() {
             <TouchableOpacity className="bg-white rounded-3xl p-4 flex-row items-center shadow-sm shadow-gray-100 mb-4">
               <Image
                 source={{
-                  uri: "https://ui-avatars.com/api/?name=Rahul+Deshmukh&background=EAA4E8&color=fff&bold=true",
+                  uri: "https://randomuser.me/api/portraits/men/42.jpg?nat=in",
                 }}
                 className="w-16 h-16 rounded-2xl bg-gray-100 mr-4"
               />

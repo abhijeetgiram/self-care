@@ -1,13 +1,47 @@
 import { useRouter } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react"; // <-- Import useEffect
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuth } from "../../context/AuthContext";
 
 export default function Verify() {
   const router = useRouter();
-  const { signIn } = useAuth(); // We will call this when verification is successful
+  const { signIn } = useAuth();
   const [code, setCode] = useState<string>("");
+
+  // 1. Add state for the timer (130 seconds = 2:10)
+  const [timeLeft, setTimeLeft] = useState<number>(130);
+
+  // 2. Create the countdown effect
+  useEffect(() => {
+    // If timer reaches 0, stop counting
+    if (timeLeft <= 0) return;
+
+    // Set an interval to decrease time by 1 every second
+    const timerId = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    // Cleanup the interval when the component unmounts or time changes
+    return () => clearInterval(timerId);
+  }, [timeLeft]);
+
+  // 3. Helper function to format seconds into MM:SS
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    // Add a leading zero if seconds are less than 10
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+  };
+
+  // 4. Handle resending the code
+  const handleResendPress = () => {
+    // Reset the timer back to 2:10
+    setTimeLeft(130);
+    // Optionally clear the current entered code
+    setCode("");
+    // (In a real app, you would also trigger your API call here to send a new email)
+  };
 
   // Numpad logic
   const handleNumberPress = (num: string) => {
@@ -20,7 +54,6 @@ export default function Verify() {
 
   const onVerifyPress = () => {
     if (code.length === 4) {
-      // Trigger the mock login to redirect to the Home tab!
       signIn();
     }
   };
@@ -52,12 +85,21 @@ export default function Verify() {
         ))}
       </View>
 
-      {/* Resend Timer */}
+      {/* Dynamic Resend Timer */}
       <View className="flex-row items-center mb-10">
-        <Text className="text-gray-800 font-medium">(2:10) </Text>
+        <Text className="text-gray-800 font-medium">
+          ({formatTime(timeLeft)}){" "}
+        </Text>
         <Text className="text-gray-400">Resend Code? </Text>
-        <TouchableOpacity>
-          <Text className="text-brand-green underline font-medium">
+        <TouchableOpacity
+          onPress={handleResendPress}
+          disabled={timeLeft > 0} // Disable button if timer is running
+        >
+          <Text
+            className={`font-medium ${
+              timeLeft > 0 ? "text-gray-300" : "text-brand-green underline"
+            }`}
+          >
             Click here
           </Text>
         </TouchableOpacity>

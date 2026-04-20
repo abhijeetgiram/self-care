@@ -11,8 +11,7 @@ export const DOCTORS_LIST: Doctor[] = [
     exp: "+10 year",
     patients: "+617",
     location: "Ruby Hall Clinic, Pune",
-    image:
-      "https://ui-avatars.com/api/?name=Rahul+Deshmukh&background=EAA4E8&color=fff&bold=true",
+    image: "https://randomuser.me/api/portraits/men/42.jpg?nat=in",
   },
   {
     id: "2",
@@ -24,8 +23,7 @@ export const DOCTORS_LIST: Doctor[] = [
     exp: "+8 year",
     patients: "+423",
     location: "Jehangir Hospital, Pune",
-    image:
-      "https://ui-avatars.com/api/?name=Priya+Sharma&background=7ED9A4&color=fff&bold=true",
+    image: "https://randomuser.me/api/portraits/women/62.jpg?nat=in",
   },
   {
     id: "3",
@@ -37,8 +35,7 @@ export const DOCTORS_LIST: Doctor[] = [
     exp: "+5 year",
     patients: "+200",
     location: "Baner Dental Care, Pune",
-    image:
-      "https://ui-avatars.com/api/?name=Amit+Kulkarni&background=6B8FE8&color=fff&bold=true",
+    image: "https://randomuser.me/api/portraits/men/31.jpg?nat=in",
   },
   {
     id: "4",
@@ -50,8 +47,7 @@ export const DOCTORS_LIST: Doctor[] = [
     exp: "+12 year",
     patients: "+890",
     location: "Manipal Hospital, Kharadi",
-    image:
-      "https://ui-avatars.com/api/?name=Sneha+Joshi&background=F47E60&color=fff&bold=true",
+    image: "https://randomuser.me/api/portraits/women/43.jpg?nat=in",
   },
   {
     id: "5",
@@ -63,7 +59,6 @@ export const DOCTORS_LIST: Doctor[] = [
     exp: "+15 year",
     patients: "+1k",
     location: "Deenanath Mangeshkar Hospital",
-    image:
-      "https://ui-avatars.com/api/?name=Anjali+Patil&background=EAA4E8&color=fff&bold=true",
+    image: "https://randomuser.me/api/portraits/women/24.jpg?nat=in",
   },
 ];
