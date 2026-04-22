@@ -1,3 +1,4 @@
+import AppLogo from "@/components/AppLogo";
 import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -48,10 +49,8 @@ export default function SignIn() {
 
   return (
     <SafeAreaView className="flex-1 bg-gray-50 items-center justify-center px-8">
-      {/* Placeholder for your cross logo */}
-      <View className="mb-12">
-        <Text className="text-brand-green text-4xl font-bold">╬</Text>
-      </View>
+      {/* Logo */}
+      <AppLogo />
 
       <Text className="text-3xl font-bold text-gray-900 mb-8">Sign In</Text>
 

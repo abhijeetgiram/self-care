@@ -1,5 +1,6 @@
+import AppLogo from "@/components/AppLogo";
 import { useRouter } from "expo-router";
-import { useEffect, useState } from "react"; // <-- Import useEffect
+import { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuth } from "../../context/AuthContext";
@@ -61,12 +62,7 @@ export default function Verify() {
   return (
     <SafeAreaView className="flex-1 bg-gray-50 pt-12 items-center">
       {/* Logo */}
-      <View className="items-center mb-10 mt-10">
-        <View className="flex-row">
-          <Text className="text-brand-green text-3xl font-bold">+</Text>
-          <Text className="text-brand-purple text-3xl font-bold">+</Text>
-        </View>
-      </View>
+      <AppLogo />
 
       <Text className="text-3xl font-bold text-gray-900 mb-2">Your Code</Text>
       <Text className="text-gray-400 mb-10">Code sent to your Email</Text>

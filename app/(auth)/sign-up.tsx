@@ -1,3 +1,4 @@
+import AppLogo from "@/components/AppLogo";
 import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -68,12 +69,7 @@ export default function SignUp() {
   return (
     <SafeAreaView className="flex-1 bg-gray-50 px-8 pt-12">
       {/* Logo */}
-      <View className="items-center mb-10 mt-10">
-        <View className="flex-row">
-          <Text className="text-brand-green text-3xl font-bold">+</Text>
-          <Text className="text-brand-purple text-3xl font-bold">+</Text>
-        </View>
-      </View>
+      <AppLogo />
 
       <Text className="text-3xl font-bold text-center text-gray-900 mb-10">
         Sign Up
