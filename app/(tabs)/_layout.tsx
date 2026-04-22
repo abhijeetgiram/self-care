@@ -1,18 +1,25 @@
+import { Ionicons } from "@expo/vector-icons"; // Built-in Expo icons
 import { Tabs } from "expo-router";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false, // Hide the default top header
-        tabBarShowLabel: false, // Hide text labels under icons
+        headerShown: false, // We built custom headers inside the screens, so hide the default
+        tabBarActiveTintColor: "#10B981", // This is a nice Emerald Green (change to match your exact brand hex)
+        tabBarInactiveTintColor: "#9CA3AF", // Gray-400 for unselected tabs
         tabBarStyle: {
-          backgroundColor: "white",
-          borderTopWidth: 0,
-          elevation: 0,
-          height: 80,
+          height: 65,
+          paddingBottom: 10,
           paddingTop: 10,
+          borderTopWidth: 1,
+          borderTopColor: "#F3F4F6", // Very light gray border
+          backgroundColor: "#FFFFFF",
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: "600",
         },
       }}
     >
@@ -20,52 +27,62 @@ export default function TabLayout() {
       <Tabs.Screen
         name="home"
         options={{
-          tabBarIcon: ({ focused }) => (
-            <Text
-              className={`text-2xl ${focused ? "text-brand-green" : "text-gray-300"}`}
-            >
-              ⌂
-            </Text>
+          title: "Home",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "home" : "home-outline"}
+              size={24}
+              color={color}
+            />
           ),
         }}
       />
 
-      {/* 2. Records/Appointments Tab */}
+      {/* 2. Doctors Tab */}
       <Tabs.Screen
-        name="appointments"
+        name="doctors"
         options={{
-          tabBarIcon: ({ focused }) => (
-            <Text
-              className={`text-2xl ${focused ? "text-brand-green" : "text-gray-300"}`}
-            >
-              📄
-            </Text>
+          title: "Doctors",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "medkit" : "medkit-outline"}
+              size={24}
+              color={color}
+            />
           ),
         }}
       />
 
-      {/* 3. Center Add Button Tab */}
+      {/* 3. Add / Quick Action Tab (Floating Style) */}
       <Tabs.Screen
         name="add"
         options={{
-          tabBarIcon: () => (
-            <View className="bg-brand-green w-14 h-14 rounded-full items-center justify-center shadow-sm -mt-5">
-              <Text className="text-white text-3xl font-light">+</Text>
+          title: "", // No title so the button sits perfectly in the middle
+          tabBarIcon: ({ focused }) => (
+            <View
+              className={`w-14 h-14 items-center justify-center rounded-full -mt-4 shadow-sm ${
+                focused
+                  ? "bg-brand-green shadow-brand-green/40"
+                  : "bg-brand-green/80"
+              }`}
+            >
+              <Ionicons name="add" size={32} color="white" />
             </View>
           ),
         }}
       />
 
-      {/* 4. Doctors List Tab */}
+      {/* 4. Appointments / Visits Tab */}
       <Tabs.Screen
-        name="doctors"
+        name="appointments"
         options={{
-          tabBarIcon: ({ focused }) => (
-            <Text
-              className={`text-2xl ${focused ? "text-brand-green" : "text-gray-300"}`}
-            >
-              🩺
-            </Text>
+          title: "Visits",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "calendar" : "calendar-outline"}
+              size={24}
+              color={color}
+            />
           ),
         }}
       />
@@ -74,12 +91,13 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          tabBarIcon: ({ focused }) => (
-            <Text
-              className={`text-2xl ${focused ? "text-brand-green" : "text-gray-300"}`}
-            >
-              👤
-            </Text>
+          title: "Profile",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "person" : "person-outline"}
+              size={24}
+              color={color}
+            />
           ),
         }}
       />
