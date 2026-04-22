@@ -1,6 +1,11 @@
-import { Stack, useRouter, useSegments } from "expo-router";
+import {
+  Stack,
+  useRootNavigationState,
+  useRouter,
+  useSegments,
+} from "expo-router";
 import { useEffect } from "react";
-import { AuthProvider, useAuth } from "../context/AuthContext"; // Import our new provider and hook
+import { AuthProvider, useAuth } from "../context/AuthContext";
 import "../global.css";
 
 const InitialLayout = () => {
@@ -8,28 +13,33 @@ const InitialLayout = () => {
   const segments = useSegments();
   const router = useRouter();
 
-  // This effect listens to auth state and redirects accordingly
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const inTabsGroup = segments[0] === "(tabs)";
-      const inAuthGroup = segments[0] === "(auth)";
+  const navigationState = useRootNavigationState();
 
-      if (isSignedIn && !inTabsGroup) {
+  useEffect(() => {
+    if (!navigationState?.key) return;
+
+    const inAuthGroup = segments[0] === "(auth)";
+    const isRoot = !segments[0];
+
+    // Push the navigation to the next event loop tick.
+    // This gives React the exact microsecond it needs to finish mounting the <Stack />.
+    const routingTimeout = setTimeout(() => {
+      if (isSignedIn && (inAuthGroup || isRoot)) {
         router.replace("/(tabs)/home");
       } else if (!isSignedIn && !inAuthGroup) {
         router.replace("/(auth)/sign-in");
       }
-    }, 800); // 800ms artificial delay for the splash screen
+    }, 1);
 
-    return () => clearTimeout(timer);
-  }, [isSignedIn, segments]);
+    // Clean up the timeout if the component unmounts quickly
+    return () => clearTimeout(routingTimeout);
+  }, [isSignedIn, segments, navigationState?.key]);
 
   return <Stack screenOptions={{ headerShown: false }} />;
 };
 
 export default function RootLayout() {
   return (
-    // Wrap the app in our cleanly extracted AuthProvider
     <AuthProvider>
       <InitialLayout />
     </AuthProvider>

@@ -7,6 +7,13 @@ export interface Doctor {
   price: string;
   exp: string;
   patients: string;
-  location: string;
-  image: string;
+  location: string; // Used for quick display on cards
+  address: string; // Detailed street address
+  hospital: string; // Associated hospital/clinic
+  about: string; // Bio text
+  coordinates: {
+    latitude: number;
+    longitude: number;
+  };
+  image: any;
 }

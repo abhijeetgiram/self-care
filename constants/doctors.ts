@@ -11,6 +11,11 @@ export const DOCTORS_LIST: Doctor[] = [
     exp: "+10 year",
     patients: "+617",
     location: "Ruby Hall Clinic, Pune",
+    address: "40, Sassoon Road, Sangamvadi",
+    hospital: "Ruby Hall Clinic",
+    about:
+      "Dr. Rahul Deshmukh is a highly respected pediatrician with over 10 years of experience. He specializes in infant care, childhood vaccinations, and pediatric asthma management. He is known for his gentle approach with children.",
+    coordinates: { latitude: 18.5363, longitude: 73.8752 },
     image: "https://randomuser.me/api/portraits/men/41.jpg",
   },
   {
@@ -23,6 +28,11 @@ export const DOCTORS_LIST: Doctor[] = [
     exp: "+8 year",
     patients: "+423",
     location: "Jehangir Hospital, Pune",
+    address: "32, Sassoon Road, Near Pune Station",
+    hospital: "Jehangir Hospital",
+    about:
+      "Dr. Priya Sharma is a leading Nephrologist focusing on chronic kidney disease and dialysis management. She strongly believes in preventive care and works closely with patients to maintain their renal health.",
+    coordinates: { latitude: 18.5284, longitude: 73.8751 },
     image: "https://randomuser.me/api/portraits/women/42.jpg",
   },
   {
@@ -34,7 +44,12 @@ export const DOCTORS_LIST: Doctor[] = [
     price: "₹500",
     exp: "+5 year",
     patients: "+200",
-    location: "Baner Dental Care, Pune",
+    location: "Baner Dental Care",
+    address: "Main Road, Near Baner Phata",
+    hospital: "Baner Dental Care",
+    about:
+      "Dr. Amit Kulkarni provides comprehensive dental care, specializing in painless root canals and cosmetic dentistry. His clinic is equipped with the latest technology to ensure the best patient experience.",
+    coordinates: { latitude: 18.559, longitude: 73.7868 },
     image: "https://randomuser.me/api/portraits/men/43.jpg",
   },
   {
@@ -47,6 +62,11 @@ export const DOCTORS_LIST: Doctor[] = [
     exp: "+12 year",
     patients: "+890",
     location: "Sanjivan Eye Hospital, Kharadi",
+    address: "EON Free Zone Road, Kharadi",
+    hospital: "Sanjivan Eye Hospital",
+    about:
+      "Dr. Sneha Joshi is an expert in cataract surgery and LASIK procedures. She is dedicated to providing advanced eye care solutions and has successfully restored perfect vision for hundreds of patients.",
+    coordinates: { latitude: 18.5515, longitude: 73.9348 },
     image: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
@@ -58,7 +78,12 @@ export const DOCTORS_LIST: Doctor[] = [
     price: "₹1500",
     exp: "+15 year",
     patients: "+1k",
-    location: "Deenanath Mangeshkar Hospital",
+    location: "Deenanath Mangeshkar",
+    address: "Erandwane, Near Mhatre Bridge",
+    hospital: "Deenanath Mangeshkar",
+    about:
+      "Dr. Anjali Patil is a senior cardiologist specializing in interventional cardiology. She handles complex cardiac cases and focuses heavily on lifestyle modifications to prevent heart disease.",
+    coordinates: { latitude: 18.5029, longitude: 73.834 },
     image: "https://randomuser.me/api/portraits/women/45.jpg",
   },
   {
@@ -70,10 +95,14 @@ export const DOCTORS_LIST: Doctor[] = [
     price: "₹600",
     exp: "+7 year",
     patients: "+350",
-    location: "Smiles Dental Clinic, Viman Nagar",
+    location: "Smiles Dental, Viman Nagar",
+    address: "Datta Mandir Chowk, Viman Nagar",
+    hospital: "Smiles Dental Clinic",
+    about:
+      "Dr. Vikram Singh is highly skilled in restorative dentistry and orthodontics. He aims to provide affordable and high-quality dental care in a comfortable and stress-free environment.",
+    coordinates: { latitude: 18.5679, longitude: 73.9143 },
     image: "https://randomuser.me/api/portraits/men/46.jpg",
   },
-  // --- NEW DOCTORS BELOW ---
   {
     id: "7",
     name: "Dr. Siddharth Joshi",
@@ -83,7 +112,12 @@ export const DOCTORS_LIST: Doctor[] = [
     price: "₹1000",
     exp: "+14 year",
     patients: "+800",
-    location: "Sancheti Hospital, Shivajinagar",
+    location: "Sancheti Hospital",
+    address: "Shivajinagar, Near Thube Park",
+    hospital: "Sancheti Hospital",
+    about:
+      "Dr. Siddharth Joshi is a renowned orthopedic surgeon specializing in joint replacements and sports injuries. He uses minimally invasive techniques to ensure faster recovery times for his patients.",
+    coordinates: { latitude: 18.5314, longitude: 73.8446 },
     image: "https://randomuser.me/api/portraits/men/47.jpg",
   },
   {
@@ -95,7 +129,12 @@ export const DOCTORS_LIST: Doctor[] = [
     price: "₹800",
     exp: "+9 year",
     patients: "+550",
-    location: "SkinCare Clinic, Koregaon Park",
+    location: "SkinCare Clinic",
+    address: "North Main Road, Koregaon Park",
+    hospital: "SkinCare Clinic",
+    about:
+      "Dr. Meera Reddy is a board-certified dermatologist focusing on clinical and cosmetic dermatology. She provides tailored treatments for acne, pigmentation, and anti-aging therapies.",
+    coordinates: { latitude: 18.5362, longitude: 73.8969 },
     image: "https://randomuser.me/api/portraits/women/48.jpg",
   },
   {
@@ -108,6 +147,11 @@ export const DOCTORS_LIST: Doctor[] = [
     exp: "+12 year",
     patients: "+2k",
     location: "Apollo Clinic, Aundh",
+    address: "ITI Road, Near Crossword, Aundh",
+    hospital: "Apollo Clinic",
+    about:
+      "Dr. Rohan Mehta is a highly trusted family physician known for his accurate diagnoses and compassionate care. He manages chronic illnesses like diabetes and hypertension with great success.",
+    coordinates: { latitude: 18.5562, longitude: 73.8056 },
     image: "https://randomuser.me/api/portraits/men/49.jpg",
   },
   {
@@ -119,7 +163,12 @@ export const DOCTORS_LIST: Doctor[] = [
     price: "₹1100",
     exp: "+16 year",
     patients: "+1.5k",
-    location: "Cloudnine Hospital, Kalyani Nagar",
+    location: "Cloudnine, Kalyani Nagar",
+    address: "Kalyani Nagar Bypass, Pune",
+    hospital: "Cloudnine Hospital",
+    about:
+      "Dr. Kavita Nair is an expert obstetrician and gynecologist. She is passionate about maternal health, offering comprehensive care from prenatal counseling to safe deliveries.",
+    coordinates: { latitude: 18.5463, longitude: 73.9033 },
     image: "https://randomuser.me/api/portraits/women/50.jpg",
   },
 ];

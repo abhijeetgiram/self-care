@@ -1,8 +1,9 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { DOCTORS_LIST } from "../../constants/doctors"; // <-- Import the centralized data!
+import { DOCTORS_LIST } from "../../constants/doctors";
 
 export default function DoctorDetails() {
   const router = useRouter();
@@ -90,19 +91,25 @@ export default function DoctorDetails() {
         {/* Stats Row */}
         <View className="flex-row justify-between mb-8">
           <View className="bg-white rounded-2xl p-4 items-center w-[30%] shadow-sm shadow-gray-100">
-            <Text className="text-gray-400 text-xs mb-2">Patients</Text>
+            <Text className="text-gray-500 font-medium text-sm mb-2">
+              Patients
+            </Text>
             <Text className="text-gray-900 font-bold text-lg">
               {doctor.patients}
             </Text>
           </View>
           <View className="bg-white rounded-2xl p-4 items-center w-[30%] shadow-sm shadow-gray-100">
-            <Text className="text-gray-400 text-xs mb-2">Experiences</Text>
+            <Text className="text-gray-500 font-medium text-sm mb-2">
+              Experiences
+            </Text>
             <Text className="text-gray-900 font-bold text-lg">
               {doctor.exp}
             </Text>
           </View>
           <View className="bg-white rounded-2xl p-4 items-center w-[30%] shadow-sm shadow-gray-100">
-            <Text className="text-gray-400 text-xs mb-2">Ratings</Text>
+            <Text className="text-gray-500 font-medium text-sm mb-2">
+              Ratings
+            </Text>
             <Text className="text-gray-900 font-bold text-lg">
               {doctor.rating} ★
             </Text>
@@ -168,29 +175,68 @@ export default function DoctorDetails() {
           })}
         </View>
 
-        {/* Location Placeholder */}
-        <Text className="text-xl font-bold text-gray-900 mb-4">Location</Text>
-        <View className="flex-row items-center mb-6">
-          <Text className="text-gray-400 mr-2">📍</Text>
-          <Text className="text-gray-500 flex-1">{doctor.location}</Text>
+        {/* About Section */}
+        <View className="mb-8">
+          <Text className="text-xl font-bold text-gray-900 mb-3">
+            About a doctor
+          </Text>
+          <Text className="text-gray-500 leading-relaxed text-base">
+            {doctor.about}
+          </Text>
         </View>
-        <View className="w-full h-32 bg-gray-200 rounded-2xl mb-32 items-center justify-center">
-          <Text className="text-gray-400">Map Area Placeholder</Text>
-        </View>
-      </ScrollView>
 
-      {/* Floating Action Button */}
-      <View className="absolute bottom-8 left-6 right-6">
+        {/* Location Section */}
+        <Text className="text-xl font-bold text-gray-900 mb-4">Location</Text>
+
+        <View className="flex-row mb-6 justify-between">
+          <View className="flex-row w-[48%]">
+            <Text className="text-gray-800 text-xl mr-2 mt-1">📍</Text>
+            <Text className="text-gray-500 leading-relaxed font-medium flex-1">
+              {doctor.address}, Pune
+            </Text>
+          </View>
+
+          <View className="flex-row w-[48%]">
+            <Text className="text-gray-800 text-xl mr-2 mt-1">🏥</Text>
+            <Text className="text-gray-500 leading-relaxed font-medium flex-1">
+              {doctor.hospital}
+            </Text>
+          </View>
+        </View>
+
+        {/* Interactive Map */}
+        <View className="w-full h-48 rounded-3xl overflow-hidden mb-8 border border-gray-200">
+          <MapView
+            style={{ flex: 1 }}
+            initialRegion={{
+              latitude: doctor.coordinates.latitude,
+              longitude: doctor.coordinates.longitude,
+              latitudeDelta: 0.05,
+              longitudeDelta: 0.05,
+            }}
+          >
+            <Marker
+              coordinate={{
+                latitude: doctor.coordinates.latitude,
+                longitude: doctor.coordinates.longitude,
+              }}
+              title={doctor.hospital}
+              description={doctor.address}
+            />
+          </MapView>
+        </View>
+
+        {/* Inline Action Button */}
         <TouchableOpacity
           onPress={onMakeAppointment}
-          className="bg-brand-green py-5 rounded-full items-center shadow-lg shadow-brand-green/40 flex-row justify-center"
+          className="bg-brand-green py-5 rounded-full items-center shadow-lg shadow-brand-green/40 flex-row justify-center mb-20"
         >
           <Text className="text-white font-bold text-lg mr-2">
             ● Make appointment
           </Text>
           <Text className="text-white font-bold text-lg"> {">>"}</Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
