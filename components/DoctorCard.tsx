@@ -1,6 +1,6 @@
+import { Doctor } from "@/models/doctor";
 import { Link } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { Doctor } from "../constants/doctors"; // Import our type definition
 
 interface DoctorCardProps {
   doctor: Doctor;

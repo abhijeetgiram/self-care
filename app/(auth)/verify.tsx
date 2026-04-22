@@ -9,10 +9,10 @@ export default function Verify() {
   const { signIn } = useAuth();
   const [code, setCode] = useState<string>("");
 
-  // 1. Add state for the timer (130 seconds = 2:10)
+  // Added state for the timer (130 seconds = 2:10)
   const [timeLeft, setTimeLeft] = useState<number>(130);
 
-  // 2. Create the countdown effect
+  // Created the countdown effect
   useEffect(() => {
     // If timer reaches 0, stop counting
     if (timeLeft <= 0) return;
@@ -26,7 +26,7 @@ export default function Verify() {
     return () => clearInterval(timerId);
   }, [timeLeft]);
 
-  // 3. Helper function to format seconds into MM:SS
+  // Helper function to format seconds into MM:SS
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -34,13 +34,13 @@ export default function Verify() {
     return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
   };
 
-  // 4. Handle resending the code
+  // Handle resending the code
   const handleResendPress = () => {
     // Reset the timer back to 2:10
     setTimeLeft(130);
     // Optionally clear the current entered code
     setCode("");
-    // (In a real app, you would also trigger your API call here to send a new email)
+    // Trigger API call here to send a new email
   };
 
   // Numpad logic

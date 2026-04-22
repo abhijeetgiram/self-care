@@ -10,7 +10,7 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [agreed, setAgreed] = useState(false);
 
-  // 1. Add state to hold our validation errors
+  // Added state to hold our validation errors
   const [errors, setErrors] = useState({
     fullName: "",
     email: "",
@@ -18,7 +18,7 @@ export default function SignUp() {
     agreed: "",
   });
 
-  // 2. Create the validation logic
+  // Created the validation logic
   const validateForm = () => {
     let isValid = true;
     let newErrors = { fullName: "", email: "", password: "", agreed: "" };
@@ -59,7 +59,7 @@ export default function SignUp() {
   };
 
   const onSignUpPress = () => {
-    // 3. Only navigate if the form passes validation
+    // Only navigate if the form passes validation
     if (validateForm()) {
       router.push("/(auth)/verify");
     }
@@ -91,7 +91,7 @@ export default function SignUp() {
           className={`w-full bg-gray-100 rounded-xl px-4 py-4 text-gray-800 ${
             errors.fullName ? "border border-red-500 bg-red-50" : ""
           }`}
-          placeholder="Abhijeet Giram"
+          placeholder="John Doe"
         />
         {errors.fullName ? (
           <Text className="text-red-500 text-xs mt-1 ml-1">
@@ -113,7 +113,7 @@ export default function SignUp() {
           className={`w-full bg-gray-100 rounded-xl px-4 py-4 text-gray-800 ${
             errors.email ? "border border-red-500 bg-red-50" : ""
           }`}
-          placeholder="abhijeet@example.com" // Localized placeholder
+          placeholder="patient@self.com"
           keyboardType="email-address"
         />
         {errors.email ? (

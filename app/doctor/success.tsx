@@ -6,14 +6,13 @@ export default function Success() {
   const router = useRouter();
 
   const onGoHome = () => {
-    // Replace clears the stack so they can't hit "back" to go to the success screen again
+    // Replaced clears the stack so they can't hit "back" to go to the success screen again
     router.replace("/(tabs)/home");
   };
 
   return (
     <SafeAreaView className="flex-1 bg-brand-green" edges={["top", "bottom"]}>
       <View className="flex-1 items-center justify-center px-8">
-        {/* Mocking the Cross Logo using basic views */}
         <View className="flex-row items-center justify-center mb-8">
           <Text className="text-white text-5xl font-extrabold mr-1">+</Text>
           <Text className="text-brand-purple text-5xl font-extrabold ml-1">

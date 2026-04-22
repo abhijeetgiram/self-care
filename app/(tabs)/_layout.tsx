@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons"; // Built-in Expo icons
+import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import { View } from "react-native";
 
@@ -7,7 +7,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false, // We built custom headers inside the screens, so hide the default
-        tabBarActiveTintColor: "#10B981", // This is a nice Emerald Green (change to match your exact brand hex)
+        tabBarActiveTintColor: "#10B981", // This is a nice Emerald Green
         tabBarInactiveTintColor: "#9CA3AF", // Gray-400 for unselected tabs
         tabBarStyle: {
           height: 65,

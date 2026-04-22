@@ -1,12 +1,48 @@
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import { useState } from "react";
+import {
+  Alert,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { USER_PROFILE } from "../../constants/user"; // <-- Import the new constant
+import { USER_PROFILE } from "../../constants/user";
 import { useAuth } from "../../context/AuthContext";
 
 export default function Profile() {
   const { signOut } = useAuth();
 
-  // Reusable component for the detail rows
+  // Created a local state to hold the profile image
+  const [profileImage, setProfileImage] = useState(USER_PROFILE.image);
+
+  // Function to handle Camera or Gallery
+  const handleEditPhoto = async () => {
+    // Ask for permission
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+
+    if (status !== "granted") {
+      Alert.alert(
+        "Permission Denied",
+        "We need camera access to change your picture.",
+      );
+      return;
+    }
+
+    // Launch the camera
+    const result = await ImagePicker.launchCameraAsync({
+      allowsEditing: true, // Let user crop the photo to a square
+      aspect: [1, 1],
+      quality: 0.7, // Compress it a bit for better performance
+    });
+
+    if (!result.canceled) {
+      setProfileImage(result.assets[0].uri);
+    }
+  };
+
   const InfoRow = ({
     label,
     value,
@@ -26,21 +62,24 @@ export default function Profile() {
 
   return (
     <SafeAreaView className="flex-1 bg-gray-50" edges={["top"]}>
-      {/* Header */}
       <View className="px-6 pt-4 pb-6">
         <Text className="text-3xl font-bold text-gray-900">Profile</Text>
       </View>
 
       <ScrollView className="flex-1 px-6" showsVerticalScrollIndicator={false}>
-        {/* Top Section: Avatar, Name, and Email */}
         <View className="items-center mb-8">
           <View className="relative shadow-sm shadow-brand-green/20 rounded-full mb-4">
             <Image
-              source={{ uri: USER_PROFILE.image }}
-              className="w-28 h-28 rounded-full border-4 border-white"
+              source={{ uri: profileImage }}
+              className="w-28 h-28 rounded-full border-4 border-white bg-gray-200"
             />
-            <TouchableOpacity className="absolute bottom-0 right-0 bg-brand-green w-8 h-8 rounded-full border-2 border-white items-center justify-center">
-              <Text className="text-white text-xs">✏️</Text>
+            {/* The Edit Button now triggers handleEditPhoto */}
+            <TouchableOpacity
+              onPress={handleEditPhoto}
+              className="absolute bottom-0 right-0 bg-brand-green w-10 h-10 rounded-full border-4 border-white items-center justify-center shadow-md"
+              activeOpacity={0.8}
+            >
+              <Text className="text-white text-base">📸</Text>
             </TouchableOpacity>
           </View>
 
@@ -52,7 +91,7 @@ export default function Profile() {
           </Text>
         </View>
 
-        {/* Personal Information Card */}
+        {/* Rest of your Personal Information & Settings cards */}
         <Text className="text-lg font-bold text-gray-900 mb-3 ml-2">
           Personal Information
         </Text>
@@ -72,15 +111,15 @@ export default function Profile() {
         </Text>
         <View className="bg-white rounded-3xl p-5 shadow-sm shadow-gray-100 mb-8">
           <TouchableOpacity className="flex-row justify-between items-center py-3 border-b border-gray-100">
-            <Text className="text-gray-700 font-medium">Notifications</Text>
+            <Text className="text-gray-300 font-medium">Notifications</Text>
             <Text className="text-gray-300 font-bold">{">"}</Text>
           </TouchableOpacity>
           <TouchableOpacity className="flex-row justify-between items-center py-3 border-b border-gray-100">
-            <Text className="text-gray-700 font-medium">Privacy Policy</Text>
+            <Text className="text-gray-300 font-medium">Privacy Policy</Text>
             <Text className="text-gray-300 font-bold">{">"}</Text>
           </TouchableOpacity>
           <TouchableOpacity className="flex-row justify-between items-center py-3">
-            <Text className="text-gray-700 font-medium">Terms of Service</Text>
+            <Text className="text-gray-300 font-medium">Terms of Service</Text>
             <Text className="text-gray-300 font-bold">{">"}</Text>
           </TouchableOpacity>
         </View>
@@ -88,7 +127,7 @@ export default function Profile() {
         {/* Logout Button */}
         <TouchableOpacity
           onPress={signOut}
-          className="bg-red-50 py-4 rounded-2xl items-center border border-red-100 mb-12 shadow-sm"
+          className="bg-red-50 py-4 rounded-2xl items-center border border-red-100 mb-12"
         >
           <Text className="text-red-500 font-bold text-lg">Sign Out</Text>
         </TouchableOpacity>

@@ -15,5 +15,6 @@ export interface Doctor {
     latitude: number;
     longitude: number;
   };
-  image: any;
+  image: string;
+  keywords: string[];
 }

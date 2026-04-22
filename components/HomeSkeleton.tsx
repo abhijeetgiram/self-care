@@ -29,7 +29,7 @@ export default function HomeSkeleton() {
       style={{ flex: 1, minHeight: 800 }}
       maskElement={
         <View className="flex-1 bg-transparent mb-24">
-          {/* 1. Header Mask (Welcome Abhijeet + Avatar) */}
+          {/*  Header Mask (Welcome UserName + Avatar) */}
           <View className="flex-row justify-between items-center mb-6">
             <View>
               <View className="w-48 h-8 bg-black rounded-lg mb-2" />
@@ -38,10 +38,10 @@ export default function HomeSkeleton() {
             <View className="w-12 h-12 bg-black rounded-full" />
           </View>
 
-          {/* 2. Search Bar Mask */}
+          {/* Search Bar Mask */}
           <View className="w-full h-14 bg-black rounded-2xl mb-8" />
 
-          {/* 3. Recent Section Mask */}
+          {/* Recent Section Mask */}
           <View className="mb-8">
             <View className="flex-row justify-between items-center mb-4">
               <View className="w-20 h-6 bg-black rounded-md" />
@@ -54,7 +54,7 @@ export default function HomeSkeleton() {
             </View>
           </View>
 
-          {/* 4. Categories Mask */}
+          {/* Categories Mask */}
           <View className="mb-8">
             <View className="w-24 h-6 bg-black rounded-md mb-4" />
             <View className="flex-row justify-between">
@@ -65,7 +65,7 @@ export default function HomeSkeleton() {
             </View>
           </View>
 
-          {/* 5. Popular Doctors Header Mask */}
+          {/* Popular Doctors Header Mask */}
           <View className="flex-row justify-between items-center mb-4">
             <View className="w-36 h-6 bg-black rounded-md" />
             <View className="w-12 h-4 bg-black rounded-md" />
