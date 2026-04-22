@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 
-export default function CategoriesSection() {
+export default function Categories() {
   const router = useRouter();
 
   return (

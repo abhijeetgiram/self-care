@@ -1,7 +1,6 @@
-import { Link, useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import {
-  Image,
   ScrollView,
   Text,
   TextInput,
@@ -9,20 +8,31 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import DoctorCard from "../../components/DoctorCard";
+import DoctorCardSkeleton from "../../components/DoctorCardSkeleton";
 import { DOCTORS_LIST } from "../../constants/doctors";
 
 export default function Doctors() {
   const router = useRouter();
-  // Get the query param from the URL (passed from Home screen or self)
+  // Get the query param from the URL
   const { query } = useLocalSearchParams<{ query?: string }>();
 
   // Local state for the search bar input specifically
   const [localSearch, setLocalSearch] = useState(query || "");
+  const [isSearching, setIsSearching] = useState(false);
 
-  // Update local search bar if the URL query changes
+  // Trigger a "Loading" effect whenever the URL query changes
   useEffect(() => {
     if (query !== undefined) {
       setLocalSearch(query);
+
+      // Simulate a network search delay
+      setIsSearching(true);
+      const timer = setTimeout(() => {
+        setIsSearching(false);
+      }, 800); // Fast 800ms "search" feel
+
+      return () => clearTimeout(timer);
     }
   }, [query]);
 
@@ -60,7 +70,7 @@ export default function Doctors() {
           />
         </View>
 
-        {/* Quick Filter Pills (Optional bonus logic: click these to filter too!) */}
+        {/* Quick Filter Pills */}
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -161,12 +171,23 @@ export default function Doctors() {
             <Text className="text-xl font-bold text-gray-900">
               {query ? `Results for "${query}"` : "All Doctors"}
             </Text>
-            <Text className="text-gray-400 font-medium">
-              {displayedDoctors.length} found
-            </Text>
+            {!isSearching && (
+              <Text className="text-gray-400 font-medium">
+                {displayedDoctors.length} found
+              </Text>
+            )}
           </View>
 
-          {displayedDoctors.length === 0 ? (
+          {/* Render Skeletons during search, else show data */}
+          {isSearching ? (
+            <>
+              <DoctorCardSkeleton />
+              <DoctorCardSkeleton />
+              <DoctorCardSkeleton />
+              <DoctorCardSkeleton />
+              <DoctorCardSkeleton />
+            </>
+          ) : displayedDoctors.length === 0 ? (
             <View className="items-center justify-center py-10">
               <Text className="text-4xl mb-4">🤷‍♂️</Text>
               <Text className="text-gray-500 font-medium text-lg">
@@ -183,30 +204,7 @@ export default function Doctors() {
             </View>
           ) : (
             displayedDoctors.map((doctor) => (
-              <Link href={`/doctor/${doctor.id}`} asChild key={doctor.id}>
-                <TouchableOpacity className="bg-white rounded-3xl p-4 flex-row items-center shadow-sm shadow-gray-100 mb-4">
-                  <Image
-                    source={{ uri: doctor.image }}
-                    className="w-16 h-16 rounded-2xl bg-gray-100 mr-4"
-                  />
-                  <View className="flex-1">
-                    <Text className="text-gray-900 font-bold text-lg">
-                      {doctor.name}
-                    </Text>
-                    <Text className="text-gray-400 text-sm">
-                      {doctor.specialty}
-                    </Text>
-                  </View>
-                  <View className="items-end">
-                    <Text className="text-gray-900 font-bold text-sm">
-                      ★ {doctor.rating}
-                    </Text>
-                    <Text className="text-gray-400 text-xs">
-                      ({doctor.reviews} reviews)
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              </Link>
+              <DoctorCard key={doctor.id} doctor={doctor} />
             ))
           )}
         </View>

@@ -8,10 +8,10 @@ export default function SignIn() {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
 
-  // 1. Add state to hold our validation errors
+  // Added state to hold our validation errors
   const [errors, setErrors] = useState({ email: "", password: "" });
 
-  // 2. Create the validation logic
+  // Created the validation logic
   const validateForm = () => {
     let isValid = true;
     let newErrors = { email: "", password: "" };
@@ -40,7 +40,7 @@ export default function SignIn() {
   };
 
   const onSignInPress = () => {
-    // 3. Only navigate if the form passes validation
+    // Only navigate if the form passes validation
     if (validateForm()) {
       router.push("/(auth)/verify");
     }
@@ -103,9 +103,7 @@ export default function SignIn() {
       </View>
 
       <TouchableOpacity className="w-full items-end mb-12 mt-2">
-        <Text className="text-brand-green font-medium">
-          Forgot your password?
-        </Text>
+        <Text className="text-gray-300 font-medium">Forgot your password?</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
