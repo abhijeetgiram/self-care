@@ -1,50 +1,104 @@
-# Welcome to your Expo app 👋
+# SelfCare App ++
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A high-performance healthcare management mobile application built with **React Native** and **Expo**. Designed with a clean, modern aesthetic and optimized for high-speed user interactions.
 
-## Get started
+## 👤 Developed By
 
-1. Install dependencies
+**Abhijeet Giram** _Version: 1.0.0_
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 📱 App Structure
 
-   ```bash
-   npx expo start
-   ```
+The application utilizes **Expo Router** for file-based navigation:
 
-In the output, you'll find options to open the app in a
+- **(auth)/:** - `sign-in`: Branded login with "Plus-Plus" logo.
+  - `sign-up`: New account registration.
+  - `verify`: OTP/Verification flow.
+- **(tabs)/:**
+  - `home`: Dashboard featuring debounced search and Recent Activity slider.
+  - `doctors`: Global discovery with keyword-based filtering and specialized pills.
+  - `profile`: User management with **Real Camera** integration.
+- **doctor/[id]:** Dynamic route featuring **Shared Element Transitions** for seamless image gliding.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📸 Screenshots
 
-## Get a fresh project
+|                                       Authentication                                       |                                    Home Dashboard                                    |
+| :----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
+| <kbd>![Sign In Placeholder](https://via.placeholder.com/300x600?text=Sign+In+Screen)</kbd> | <kbd>![Home Placeholder](https://via.placeholder.com/300x600?text=Home+Screen)</kbd> |
 
-When you're ready, run:
+|                                      Doctor Search                                       |                                      Profile & Camera                                      |
+| :--------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
+| <kbd>![Search Placeholder](https://via.placeholder.com/300x600?text=Search+Screen)</kbd> | <kbd>![Profile Placeholder](https://via.placeholder.com/300x600?text=Profile+Screen)</kbd> |
 
-```bash
-npm run reset-project
-```
+_(Paste your actual screenshots here for a professional look)_
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 🛠 Tech Stack & Third-Party Usage
 
-To learn more about developing your project with Expo, look at the following resources:
+- **Framework:** Expo SDK 50+
+- **Styling:** `NativeWind` (Tailwind CSS for React Native)
+- **Animations:** `react-native-reanimated` (Shared Transitions & Worklets)
+- **Navigation:** `expo-router`
+- **Maps:** `react-native-maps` (Real Native Integration)
+- **Camera:** `expo-image-picker` (Real Hardware Access)
+- **Icons:** Custom "Plus-Plus" (++ logo) branding for high-end healthcare feel.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+## ⚙️ Mock vs Real Data
 
-Join our community of developers creating universal apps.
+- **Mock Data:** Optimized JSON constants (`DOCTORS_LIST`, `RECENT_ACTIVITIES`) for instant loading and architectural modularity.
+- **Mock Payment:** A simulated checkout flow for appointment bookings.
+- **Real Integration:**
+  - **Camera:** Fully functional profile picture capture and update.
+  - **Maps:** Real-time native coordinate rendering in Pune locations.
+  - **Search:** Sophisticated debounce logic (600ms) to prevent unnecessary re-renders.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## 🚀 Testing & Deployment
+
+### Expo Go Testing
+
+1. Install **Expo Go** on your Android/iOS device.
+2. Run `npx expo start -c` in your project root.
+3. Scan the QR code.
+   _Tip: If branding assets (icons/splash) don't update, force-close Expo Go and restart the bundler with the -c flag._
+
+### Build APK (EAS Build)
+
+1. Install EAS CLI: `npm install -g eas-cli`
+2. Configure project: `eas build:configure`
+3. Generate Preview APK: `eas build -p android --profile preview`
+
+---
+
+## 📈 Analysis
+
+### Pros
+
+- **Debounced Search:** Enhances UX by eliminating "typing lag."
+- **Utility Styling:** NativeWind ensures a lean stylesheet and rapid UI iteration.
+- **Shared Transitions:** Provides a premium, native-app feel usually found in top-tier apps.
+- **Architecture:** Clean separation of constants, components, and routes.
+
+### Cons
+
+- **Babel Sensitivity:** High dependency on correct plugin ordering (`reanimated/plugin` must be last).
+- **Native-Only Features:** Shared Element Transitions are skipped on Web builds.
+
+---
+
+## 🔮 Future Enhancements
+
+- Integration of a real Node.js/PostgreSQL or Firebase backend.
+- Real-time chat using WebSockets/Socket.io.
+- Appointment reminders via Push Notifications.
+
+---
+
+© 2026 SelfCare by Abhijeet Giram.
