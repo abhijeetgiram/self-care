@@ -18,7 +18,7 @@ The application utilizes **Expo Router** for file-based navigation:
 - **(tabs)/:**
   - `home`: Dashboard featuring debounced search and Recent Activity slider.
   - `doctors`: Global discovery with keyword-based filtering and specialized pills.
-  - `profile`: User management with **Real Camera** integration.
+  - `profile`: User management with **Dynamic Image Selection** using Camera and Gallery integration.
 - **doctor/[id]:** Dynamic route featuring **Shared Element Transitions** for seamless image gliding.
 
 ---
@@ -33,74 +33,13 @@ Here is a recording of the application flow on a physical device.
 
 ---
 
-## 📸 App Experience
+## 📸 App Experience & Screens
 
-Explore the intuitive user interface and seamless navigation through key screens of the SelfCare App, showcasing authentication, doctor discovery, appointment booking, and profile management.
+Click the link below to view the full, high-fidelity gallery of the SelfCare App interface, featuring optimized vertical screenshots and cohesive flow demos.
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><b>1. Sign In</b></td>
-      <td align="center"><b>2. Verify</b></td>
-    </tr>
-    <tr>
-      <td><kbd><img src="docs/assets/01-sign-in.jpeg" alt="Sign In" width="330" /></kbd></td>
-      <td><kbd><img src="docs/assets/02-verify.jpeg" alt="Home" width="320" /></kbd></td>
-    </tr>
-  </table>
-</div>
+### [👉 View Full App Experience Documentation](docs/AppExperience.md)
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><b>3. Home</b></td>
-      <td align="center"><b>4. Doctor List</b></td>
-    </tr>
-    <tr>
-      <td><kbd><img src="docs/assets/03-home.jpeg" alt="OTP Verify" width="320" /></kbd></td>
-      <td><kbd><img src="docs/assets/04-doctor-list.jpeg" alt="Doctors" width="320" /></kbd></td>
-    </tr>
-  </table>
-</div>
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><b>5. Doctor Details</b></td>
-      <td align="center"><b>6. Map Location</b></td>
-    </tr>
-    <tr>
-      <td><kbd><img src="docs/assets/05-doctor-details-01.jpeg" alt="Profile" width="330" /></kbd></td>
-      <td><kbd><img src="docs/assets/06-doctor-details-02.jpeg" alt="Transition" width="320" /></kbd></td>
-    </tr>
-  </table>
-</div>
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><b>7. Payment</b></td>
-      <td align="center"><b>8. Appointment</b></td>
-    </tr>
-    <tr>
-      <td><kbd><img src="docs/assets/07-payment.jpeg" alt="Profile" width="350" /></kbd></td>
-      <td><kbd><img src="docs/assets/08-appointment.jpeg" alt="Transition" width="320" /></kbd></td>
-    </tr>
-  </table>
-</div>
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><b>9. Profile</b></td>
-      <td align="center"><b>10. App</b></td>
-    </tr>
-    <tr>
-      <td><kbd><img src="docs/assets/09-profile.jpeg" alt="Profile" width="310" /></kbd></td>
-      <td><kbd><img src="docs/assets/10-app.jpeg" alt="Transition" width="320" /></kbd></td>
-    </tr>
-  </table>
-</div>
+_(Redirects to detailed documentation in the `docs` folder featuring onboarding, discovery, bookings, and profile screens.)_
 
 ---
 
@@ -111,7 +50,7 @@ Explore the intuitive user interface and seamless navigation through key screens
 - **Animations:** `react-native-reanimated` (Shared Transitions & Worklets)
 - **Navigation:** `expo-router`
 - **Maps:** `react-native-maps` (Real Native Integration)
-- **Camera:** `expo-image-picker` (Real Hardware Access)
+- **Camera/Gallery:** `expo-image-picker` (Real Hardware Access to handle dynamic camera/gallery selection and crop workflows).
 - **Icons:** Custom "Plus-Plus" (++ logo) branding for high-end healthcare feel.
 
 ---
@@ -121,7 +60,7 @@ Explore the intuitive user interface and seamless navigation through key screens
 - **Mock Data:** Optimized JSON constants (`DOCTORS_LIST`, `RECENT_ACTIVITIES`) for instant loading and architectural modularity.
 - **Mock Payment:** A simulated checkout flow for appointment bookings.
 - **Real Integration:**
-  - **Camera:** Fully functional profile picture capture and update.
+  - **Camera/Gallery:** Fully functional dynamic profile picture state updates via native permission workflows.
   - **Maps:** Real-time native coordinate rendering in Pune locations.
   - **Search:** Sophisticated debounce logic (600ms) to prevent unnecessary re-renders.
 
@@ -148,6 +87,7 @@ Explore the intuitive user interface and seamless navigation through key screens
 
 ### Pros
 
+- **Decoupled User Content:** Architecture successfully separates hardcoded system assets from dynamic user content (profile images), preparing the app for backend integration.
 - **Debounced Search:** Enhances UX by eliminating "typing lag."
 - **Utility Styling:** NativeWind ensures a lean stylesheet and rapid UI iteration.
 - **Shared Transitions:** Provides a premium, native-app feel usually found in top-tier apps.

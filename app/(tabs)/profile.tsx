@@ -18,6 +18,80 @@ export default function Profile() {
   // Created a local state to hold the profile image
   const [profileImage, setProfileImage] = useState(USER_PROFILE.image);
 
+  // Shared options to ensure consistency between gallery/camera crops
+  const pickerOptions = {
+    allowsEditing: true, // Let user crop to a square
+    aspect: [1, 1] as [number, number], // Force a square ratio for circular mask
+    quality: 0.7, // Compress for mobile performance
+    mediaTypes: ImagePicker.MediaTypeOptions.Images, // Don't pick videos
+  };
+
+  // Handles the Gallery (Media Library) flow, including permission request and image picking
+  const handlePickFromGallery = async () => {
+    // Request Gallery (Media Library) Permission
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (status !== "granted") {
+      Alert.alert(
+        "Permission Denied",
+        "Sorry, we need gallery access to change your picture.",
+      );
+      return;
+    }
+
+    // Launch the standard device picker (file system)
+    const result = await ImagePicker.launchImageLibraryAsync(pickerOptions);
+
+    // Dynamic State Update with file:// URI
+    if (!result.canceled) {
+      setProfileImage(result.assets[0].uri);
+    }
+  };
+
+  // Handles the Camera flow, including permission request and launching the camera interface
+  const handleLaunchCamera = async () => {
+    // Request Camera Permission
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+
+    if (status !== "granted") {
+      Alert.alert(
+        "Permission Denied",
+        "We need camera access to change your picture.",
+      );
+      return;
+    }
+
+    // Launch the active camera stream
+    const result = await ImagePicker.launchCameraAsync(pickerOptions);
+
+    // Dynamic State Update
+    if (!result.canceled) {
+      setProfileImage(result.assets[0].uri);
+    }
+  };
+
+  // Function to manage the profile photo update flow, giving users the choice between camera and gallery
+  const handleManageProfilePhoto = () => {
+    Alert.alert(
+      "Update Profile Photo",
+      "Would you like to take a new photo or choose one from your gallery?",
+      [
+        {
+          text: "Choose from Gallery",
+          onPress: handlePickFromGallery,
+        },
+        {
+          text: "Take a Photo",
+          onPress: handleLaunchCamera,
+        },
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+      ],
+    );
+  };
+
   // Function to handle Camera or Gallery
   const handleEditPhoto = async () => {
     // Ask for permission
@@ -43,6 +117,7 @@ export default function Profile() {
     }
   };
 
+  // Reusable component for displaying profile information rows
   const InfoRow = ({
     label,
     value,
@@ -70,16 +145,18 @@ export default function Profile() {
         <View className="items-center mb-8">
           <View className="relative shadow-sm shadow-brand-green/20 rounded-full mb-4">
             <Image
+              // Still uses your solid state logic here
               source={{ uri: profileImage }}
               className="w-28 h-28 rounded-full border-4 border-white bg-gray-200"
             />
-            {/* The Edit Button now triggers handleEditPhoto */}
+            {/* Overlay button for editing the profile picture */}
             <TouchableOpacity
-              onPress={handleEditPhoto}
+              onPress={handleManageProfilePhoto}
               className="absolute bottom-0 right-0 bg-brand-green w-10 h-10 rounded-full border-4 border-white items-center justify-center shadow-md"
               activeOpacity={0.8}
             >
-              <Text className="text-white text-base">📸</Text>
+              {/* Changed icon for general edit, not just camera */}
+              <Text className="text-white text-lg">✎</Text>
             </TouchableOpacity>
           </View>
 
@@ -91,7 +168,7 @@ export default function Profile() {
           </Text>
         </View>
 
-        {/* Rest of your Personal Information & Settings cards */}
+        {/* Personal Information Card */}
         <Text className="text-lg font-bold text-gray-900 mb-3 ml-2">
           Personal Information
         </Text>
