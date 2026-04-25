@@ -23,17 +23,84 @@ The application utilizes **Expo Router** for file-based navigation:
 
 ---
 
-## 📸 Screenshots
+## 📽 App Flow Demo
 
-|                                       Authentication                                       |                                    Home Dashboard                                    |
-| :----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
-| <kbd>![Sign In Placeholder](https://via.placeholder.com/300x600?text=Sign+In+Screen)</kbd> | <kbd>![Home Placeholder](https://via.placeholder.com/300x600?text=Home+Screen)</kbd> |
+Here is a recording of the application flow on a physical device.
 
-|                                      Doctor Search                                       |                                      Profile & Camera                                      |
-| :--------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
-| <kbd>![Search Placeholder](https://via.placeholder.com/300x600?text=Search+Screen)</kbd> | <kbd>![Profile Placeholder](https://via.placeholder.com/300x600?text=Profile+Screen)</kbd> |
+<div align="center">
+  <img src="docs/assets/app-flow.gif" alt="SelfCare App Flow" width="300" />
+</div>
 
-_(Paste your actual screenshots here for a professional look)_
+---
+
+## 📸 App Experience
+
+Explore the intuitive user interface and seamless navigation through key screens of the SelfCare App, showcasing authentication, doctor discovery, appointment booking, and profile management.
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>1. Sign In</b></td>
+      <td align="center"><b>2. Verify</b></td>
+    </tr>
+    <tr>
+      <td><kbd><img src="docs/assets/01-sign-in.jpeg" alt="Sign In" width="330" /></kbd></td>
+      <td><kbd><img src="docs/assets/02-verify.jpeg" alt="Home" width="320" /></kbd></td>
+    </tr>
+  </table>
+</div>
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>3. Home</b></td>
+      <td align="center"><b>4. Doctor List</b></td>
+    </tr>
+    <tr>
+      <td><kbd><img src="docs/assets/03-home.jpeg" alt="OTP Verify" width="320" /></kbd></td>
+      <td><kbd><img src="docs/assets/04-doctor-list.jpeg" alt="Doctors" width="320" /></kbd></td>
+    </tr>
+  </table>
+</div>
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>5. Doctor Details</b></td>
+      <td align="center"><b>6. Map Location</b></td>
+    </tr>
+    <tr>
+      <td><kbd><img src="docs/assets/05-doctor-details-01.jpeg" alt="Profile" width="330" /></kbd></td>
+      <td><kbd><img src="docs/assets/06-doctor-details-02.jpeg" alt="Transition" width="320" /></kbd></td>
+    </tr>
+  </table>
+</div>
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>7. Payment</b></td>
+      <td align="center"><b>8. Appointment</b></td>
+    </tr>
+    <tr>
+      <td><kbd><img src="docs/assets/07-payment.jpeg" alt="Profile" width="350" /></kbd></td>
+      <td><kbd><img src="docs/assets/08-appointment.jpeg" alt="Transition" width="320" /></kbd></td>
+    </tr>
+  </table>
+</div>
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>9. Profile</b></td>
+      <td align="center"><b>10. App</b></td>
+    </tr>
+    <tr>
+      <td><kbd><img src="docs/assets/09-profile.jpeg" alt="Profile" width="310" /></kbd></td>
+      <td><kbd><img src="docs/assets/10-app.jpeg" alt="Transition" width="320" /></kbd></td>
+    </tr>
+  </table>
+</div>
 
 ---
 
