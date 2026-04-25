@@ -1,6 +1,6 @@
+import { DOCTORS_LIST } from "@/constants/doctors";
 import { useRouter } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
-import { DOCTORS_LIST } from "../constants/doctors";
 import DoctorCard from "./DoctorCard";
 
 export default function PopularDoctors() {

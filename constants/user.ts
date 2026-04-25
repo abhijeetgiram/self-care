@@ -1,4 +1,6 @@
-export const USER_PROFILE = {
+import { User } from "@/models/user";
+
+export const USER_PROFILE: User = {
   firstName: "Abhijeet",
   fullName: "Abhijeet Giram",
   email: "abhijeet.giram@example.com",

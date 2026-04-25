@@ -1,3 +1,5 @@
+import { USER_PROFILE } from "@/constants/user";
+import { useAuth } from "@/context/AuthContext";
 import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
 import {
@@ -9,8 +11,6 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { USER_PROFILE } from "../../constants/user";
-import { useAuth } from "../../context/AuthContext";
 
 export default function Profile() {
   const { signOut } = useAuth();

@@ -1,8 +1,8 @@
 import { RECENT_ACTIVITIES } from "@/constants/activities";
+import { DOCTORS_LIST } from "@/constants/doctors";
 import { ActivityType } from "@/models/common";
 import { Link, useRouter } from "expo-router";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { DOCTORS_LIST } from "../constants/doctors";
 
 export default function RecentSection() {
   const router = useRouter();

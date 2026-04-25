@@ -1,5 +1,8 @@
 import Categories from "@/components/Categories";
+import HomeSkeleton from "@/components/HomeSkeleton";
 import PopularDoctors from "@/components/PopularDoctors";
+import RecentSection from "@/components/RecentSection";
+import { USER_PROFILE } from "@/constants/user";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import {
@@ -11,9 +14,6 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import HomeSkeleton from "../../components/HomeSkeleton";
-import RecentSection from "../../components/RecentSection";
-import { USER_PROFILE } from "../../constants/user";
 
 export default function Home() {
   const router = useRouter();

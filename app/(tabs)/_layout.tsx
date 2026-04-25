@@ -6,20 +6,26 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false, // We built custom headers inside the screens, so hide the default
-        tabBarActiveTintColor: "#10B981", // This is a nice Emerald Green
-        tabBarInactiveTintColor: "#9CA3AF", // Gray-400 for unselected tabs
+        headerShown: false,
+        tabBarActiveTintColor: "#10B981", // Emerald-600 (high contrast)
+        tabBarInactiveTintColor: "#6B7280", // Gray-500 (better visibility than 400)
         tabBarStyle: {
-          height: 65,
-          paddingBottom: 10,
-          paddingTop: 10,
-          borderTopWidth: 1,
-          borderTopColor: "#F3F4F6", // Very light gray border
+          height: 80, // Increased height for premium feel, crucial for clear labels
           backgroundColor: "#FFFFFF",
+          borderTopWidth: 0, // Clean, borderless look
+          elevation: 20, // Crisp native shadow on Android
+          shadowColor: "#000", // Soft shadow for iOS
+          shadowOffset: { width: 0, height: -2 },
+          shadowOpacity: 0.05,
+          shadowRadius: 10,
         },
         tabBarLabelStyle: {
           fontSize: 12,
-          fontWeight: "600",
+          fontWeight: "700", // Bolder, easier to read
+          marginBottom: 10,
+        },
+        tabBarIconStyle: {
+          marginTop: 10,
         },
       }}
     >
@@ -57,16 +63,21 @@ export default function TabLayout() {
       <Tabs.Screen
         name="add"
         options={{
-          title: "", // No title so the button sits perfectly in the middle
+          title: "", // No title, keeps the center floating action focused
           tabBarIcon: ({ focused }) => (
             <View
-              className={`w-14 h-14 items-center justify-center rounded-full -mt-4 shadow-sm ${
-                focused
-                  ? "bg-brand-green shadow-brand-green/40"
-                  : "bg-brand-green/80"
+              className={`w-16 h-16 items-center justify-center rounded-full -mt-7 ${
+                focused ? "bg-emerald-600" : "bg-emerald-500" // Standard brand color when unselected
               }`}
+              style={{
+                elevation: 10, // Specific floating shadow
+                shadowColor: "#10B981",
+                shadowOpacity: 0.4,
+                shadowRadius: 10,
+                shadowOffset: { width: 0, height: 5 },
+              }}
             >
-              <Ionicons name="add" size={32} color="white" />
+              <Ionicons name="add" size={38} color="white" />
             </View>
           ),
         }}

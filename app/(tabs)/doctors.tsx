@@ -1,3 +1,7 @@
+import Categories from "@/components/Categories";
+import DoctorCard from "@/components/DoctorCard";
+import DoctorCardSkeleton from "@/components/DoctorCardSkeleton";
+import { DOCTORS_LIST } from "@/constants/doctors";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import {
@@ -8,9 +12,6 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import DoctorCard from "../../components/DoctorCard";
-import DoctorCardSkeleton from "../../components/DoctorCardSkeleton";
-import { DOCTORS_LIST } from "../../constants/doctors";
 
 export default function Doctors() {
   const router = useRouter();
@@ -81,42 +82,9 @@ export default function Doctors() {
             </TouchableOpacity>
           )}
         </View>
-
-        {/* Quick Filter Pills */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          className="mb-2"
-        >
-          {[
-            "Dentist",
-            "Cardiologist",
-            "Pediatrics",
-            "Ophthalmologist",
-            "Orthopedist",
-          ].map((tag, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => setLocalSearch(tag)} // Now updates localSearch to trigger debounce
-              className={`px-4 py-2 rounded-lg mr-3 border ${
-                query?.toLowerCase() === tag.toLowerCase()
-                  ? "bg-brand-green border-brand-green"
-                  : "bg-gray-100 border-gray-200"
-              }`}
-            >
-              <Text
-                className={
-                  query?.toLowerCase() === tag.toLowerCase()
-                    ? "text-white font-bold"
-                    : "text-gray-500 font-medium"
-                }
-              >
-                {tag}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
       </View>
+
+      <Categories />
 
       <ScrollView className="flex-1 px-6" showsVerticalScrollIndicator={false}>
         {/* Rest of Categories and mapping (using DoctorCard) */}

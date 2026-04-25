@@ -1,9 +1,9 @@
+import { DOCTORS_LIST } from "@/constants/doctors";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { DOCTORS_LIST } from "../../constants/doctors";
 
 export default function DoctorDetails() {
   const router = useRouter();

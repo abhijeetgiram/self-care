@@ -1,3 +1,4 @@
+import { AuthProvider, useAuth } from "@/context/AuthContext";
 import {
   Stack,
   useRootNavigationState,
@@ -5,7 +6,6 @@ import {
   useSegments,
 } from "expo-router";
 import { useEffect } from "react";
-import { AuthProvider, useAuth } from "../context/AuthContext";
 import "../global.css";
 
 const InitialLayout = () => {
