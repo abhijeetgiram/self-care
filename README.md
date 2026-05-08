@@ -79,7 +79,8 @@ _(Redirects to detailed documentation in the `docs` folder featuring onboarding,
 
 1. Install EAS CLI: `npm install -g eas-cli`
 2. Configure project: `eas build:configure`
-3. Generate Preview APK: `eas build -p android --profile preview`
+3. Generate Preview APK (Android Package Kit): `eas build -p android --profile preview`
+4. For Production AAB: `eas build -p android --profile production`
 
 ---
 
@@ -105,6 +106,13 @@ _(Redirects to detailed documentation in the `docs` folder featuring onboarding,
 - Integration of a real Node.js/PostgreSQL or Firebase backend.
 - Real-time chat using WebSockets/Socket.io.
 - Appointment reminders via Push Notifications.
+
+---
+
+## Miscellaneous
+
+- **AAB (Android App Bundle):** This is Google Play’s publishing format (.aab) that lets Google generate optimized APKs for different devices. It is recommended for Play Store submission.
+- **APK (Android Package Kit):** This is the traditional format (.apk) that can be directly installed on devices.
 
 ---
 
